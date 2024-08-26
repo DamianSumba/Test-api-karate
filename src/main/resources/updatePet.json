@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "category": {
+    "id": 5,
+    "name": "peludito"
+  },
+  "name": "panchito",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 5,
+      "name": "peludito"
+    }
+  ],
+  "status": "sold"
+}

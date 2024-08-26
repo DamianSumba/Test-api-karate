@@ -1,0 +1,4 @@
+{
+  "404": { "message": "Pet not found" },
+  "400": { "message": "Invalid ID supplied" }
+}
