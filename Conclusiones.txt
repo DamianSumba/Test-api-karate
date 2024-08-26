@@ -1,1 +1,125 @@
+Conclusiones:
 
+Realizando estas pruebas se valida la funcionalidad básica de la API para gestionar los recursos de mascotas en la tienda, asegurando que los endpoints de añadir, consultar, actualizar y buscar mascotas funcionan correctamente y producen las salidas esperadas. Estos tests aseguran que la API responde con los datos correctos y en los formatos apropiados, y que se pueden gestionar los estados de los recursos adecuadamente.
+
+1. Añadir una mascota a la tienda
+Entradas:
+
+    Método HTTP: POST
+    Endpoint: /v2/pet
+    Datos de entrada (Body en formato JSON):
+    json
+    Copiar código
+    {
+      "id": 12345,
+      "name": "Lucky",
+      "status": "available"
+    }
+    Variables a capturar:
+    
+    ID de la mascota (id)
+    Nombre de la mascota (name)
+    Estatus de la mascota (status)
+    Salidas esperadas:
+    
+    Código de estado HTTP: 200 OK
+    Respuesta en JSON que refleje los datos de la mascota añadida:
+    json
+    Copiar código
+    {
+      "id": 12345,
+      "name": "Lucky",
+      "status": "available"
+    }
+    Test:
+    
+    Verificar que el código de estado HTTP es 200 OK.
+    Confirmar que el id, name, y status en la respuesta coinciden con los datos enviados.
+
+2. Consultar la mascota ingresada previamente (Búsqueda por ID)
+Entradas:
+
+    Método HTTP: GET
+    Endpoint: /v2/pet/{petId}
+    Parámetro en la URL: petId=12345
+    Variables a capturar:
+    
+    ID de la mascota (id)
+    Nombre de la mascota (name)
+    Estatus de la mascota (status)
+    Salidas esperadas:
+    
+    Código de estado HTTP: 200 OK
+    Respuesta en JSON que refleje los datos de la mascota:
+    json
+    Copiar código
+    {
+      "id": 12345,
+      "name": "Lucky",
+      "status": "available"
+    }
+    Test:
+    
+    Verificar que el código de estado HTTP es 200 OK.
+    Confirmar que el id, name, y status en la respuesta coinciden con los datos añadidos previamente.
+
+3. Actualizar el nombre de la mascota y el estatus de la mascota a “sold”
+Entradas:
+
+    Método HTTP: PUT
+    Endpoint: /v2/pet
+    Datos de entrada (Body en formato JSON):
+    json
+    Copiar código
+    {
+      "id": 12345,
+      "name": "Lucky",
+      "status": "sold"
+    }
+    Variables a capturar:
+    
+    ID de la mascota (id)
+    Nombre de la mascota (name)
+    Estatus de la mascota (status)
+    Salidas esperadas:
+    
+    Código de estado HTTP: 200 OK
+    Respuesta en JSON que refleje los datos actualizados de la mascota:
+    json
+    Copiar código
+    {
+      "id": 12345,
+      "name": "Lucky",
+      "status": "sold"
+    }
+    Test:
+    
+    Verificar que el código de estado HTTP es 200 OK.
+    Confirmar que el id, name, y status en la respuesta coinciden con los datos actualizados.
+
+4. Consultar la mascota modificada por estatus (Búsqueda por estatus)
+Entradas:
+
+    Método HTTP: GET
+    Endpoint: /v2/pet/findByStatus
+    Parámetro en la URL: status=sold
+    Variables a capturar:
+    
+    Lista de mascotas con el estatus sold
+    Salidas esperadas:
+    
+    Código de estado HTTP: 200 OK
+    Respuesta en JSON con la lista de mascotas que tengan el estatus sold, que incluya a la mascota modificada:
+    json
+    Copiar código
+    [
+      {
+        "id": 12345,
+        "name": "Lucky",
+        "status": "sold"
+      }
+    ]
+    Test:
+    
+    Verificar que el código de estado HTTP es 200 OK.
+    Confirmar que la lista contiene a la mascota con id=12345, name=Lucky, y status=sold.
